@@ -1,0 +1,12 @@
+Las fotos de los monitores están en img/E1916h/ y img/e950Swn/, las de la
+guirnalda en img/guirnalda/ y las de Stitch en img/stitch/. Cada producto muestra
+las imágenes indicadas en productos.json.
+
+Los otros cuatro productos son datos de ejemplo recuperados del catálogo anterior
+y usan img/placeholder.svg. Reemplaza esos registros y sus fotos antes de publicar.
+
+La guirnalda tiene precio 0 como señal de "Precio por confirmar". Actualiza ese
+valor y revisa el estado, la longitud, el contenido incluido y el enlace de Marketplace.
+
+Sirve la carpeta mediante HTTP o publícala en un hosting estático; fetch no funciona
+al abrir index.html directamente con el protocolo file://.

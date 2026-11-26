@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-labelledby="title description">
+  <title id="title">Foto pendiente</title>
+  <desc id="description">Reemplaza este espacio con una fotografía del producto.</desc>
+  <rect width="960" height="720" fill="#e2e8f0"/>
+  <rect x="310" y="215" width="340" height="250" rx="28" fill="#cbd5e1"/>
+  <circle cx="420" cy="300" r="32" fill="#94a3b8"/>
+  <path d="M330 430l90-92 66 66 54-52 90 78z" fill="#94a3b8"/>
+  <text x="480" y="530" text-anchor="middle" fill="#475569" font-family="Arial,sans-serif" font-size="28">Foto del producto</text>
+</svg>

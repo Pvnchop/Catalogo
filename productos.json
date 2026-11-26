@@ -1,0 +1,359 @@
+[
+  {
+    "id": "mon-dell-e1916h",
+    "titulo": "Monitor Dell 18.5\" E1916H + Soporte VESA Regulable + Cables",
+    "categoria": "Monitores",
+    "precio": 25000,
+    "precio_anterior": 30000,
+    "mostrar_ahorro": true,
+    "estado_producto": "Usado - Aceptable",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Monitor funcional de 18.5 pulgadas, ideal como segunda pantalla, para oficina, cámaras o punto de venta.",
+    "especificaciones": {
+      "Resolución": "1366 x 768 (HD) @ 60Hz",
+      "Puertos": "1x VGA y 1x DisplayPort. Compatible con HDMI usando un adaptador (no incluido).",
+      "Montaje": "Base regulable en altura e inclinación; compatible con VESA 100x100.",
+      "Incluye": "Monitor E1916H, base, llave Allen, cable VGA y cable de corriente con enchufe americano de 3 patas."
+    },
+    "notas_importantes": "La publicación indica estado usado aceptable. HDMI requiere un adaptador aparte. Incluye cable de corriente con enchufe americano de 3 patas, compatible con zapatillas multienchufe estándar.",
+    "fotos": [
+      "img/E1916h/monitor1.jpg",
+      "img/E1916h/monitor2.jpg",
+      "img/E1916h/monitor_model.jpg",
+      "img/E1916h/cable_monitor.jpg",
+      "img/E1916h/monitor_ejemplo.webp",
+      "img/E1916h/monitor_ejemplo2.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "ups-forza-nt-1011",
+    "titulo": "UPS Forza NT-1011 1000VA",
+    "categoria": "Redes y UPS",
+    "precio": 35000,
+    "precio_anterior": 42000,
+    "estado_producto": "Usado - Como nuevo",
+    "disponibilidad": "Reservado",
+    "resumen_corto": "Respaldo de energía para computador, router y equipos de oficina.",
+    "especificaciones": {
+      "Capacidad": "1000VA / 500W",
+      "Salidas": "8 tomas NEMA 5-15R (respaldo y protección)",
+      "Protección": "Regulación automática de voltaje (AVR)",
+      "Incluye": "UPS y cable de alimentación"
+    },
+    "notas_importantes": "La autonomía depende del consumo de los equipos conectados. Se entrega probado y puedo enviar video de funcionamiento.",
+    "fotos": ["img/placeholder.svg"],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "muneco-stitch-disney",
+    "titulo": "Muñeco Articulado Stitch Disney Original - Nuevo en Caja",
+    "categoria": "Coleccionables",
+    "precio": 20000,
+    "precio_anterior": 30000,
+    "mostrar_ahorro": true,
+    "estado_producto": "Nuevo en caja",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Muñeco articulado original de Stitch en su caja cerrada. Ideal para regalo o colección.",
+    "especificaciones": {
+      "Marca": "Disney",
+      "Personaje": "Stitch",
+      "Tipo": "Muñeco articulado; brazos y cabeza articulados para distintas poses",
+      "Edad recomendada": "3+ años",
+      "Presentación": "Caja con ventana exhibidora"
+    },
+    "notas_importantes": "Producto Disney original. La caja está cerrada y en excelente estado. Se puede coordinar entrega presencial según las condiciones generales del catálogo.",
+    "fotos": [
+      "img/stitch/stitch1.jpg",
+      "img/stitch/stitch2.jpg",
+      "img/stitch/stitch3.jpg",
+      "img/stitch/stitch_ejemplo1.webp",
+      "img/stitch/stitch_ejemplo2.webp",
+      "img/stitch/stitch_ejemplo3.webp"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "luz-led-ble-rgb",
+    "titulo": "Guirnalda LED BLE RGB con control Bluetooth",
+    "categoria": "Electrónica y CCTV",
+    "precio": 10000,
+    "precio_anterior": 0,
+    "estado_producto": "Open Box",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Guirnalda de luces LED RGB controlable por Bluetooth desde una app móvil.",
+    "especificaciones": {
+      "Conexión": "Bluetooth 4.0",
+      "Compatibilidad": "Android 4.0 o posterior; iOS 10.0 o posterior",
+      "Alimentación": "USB",
+      "Protección": "IP65 (según manual del producto)",
+      "Incluye": "Guirnalda LED y controlador Bluetooth"
+    },
+    "notas_importantes": "Precio por confirmar. Las fotos y el manual corresponden al producto; confirma longitud de la guirnalda y contenido final del paquete antes de publicar.",
+    "fotos": [
+      "img/guirnalda/guirnalda.jpg",
+      "img/guirnalda/guirnalda2.jpg",
+      "img/guirnalda/guirnalda3.jpg",
+      "img/guirnalda/guirnalda-ejemplo.jpg",
+      "img/guirnalda/guirnalda-ejemplo2.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "mon-aoc-e950swn",
+    "titulo": "Monitor LED AOC e950Swn 18.5 pulgadas",
+    "categoria": "Monitores",
+    "precio": 10000,
+    "precio_anterior": 15000,
+    "mostrar_ahorro": true,
+    "estado_producto": "Usado - Aceptable",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Monitor AOC de 18.5 pulgadas funcional, ideal como segunda pantalla, para estudiar, oficina o cámaras DVR.",
+    "especificaciones": {
+      "Pantalla": "18.5 pulgadas LED widescreen (16:9)",
+      "Resolución": "HD 1366 x 768 a 60 Hz",
+      "Tiempo de respuesta": "5 ms",
+      "Conexión": "Entrada VGA (D-Sub)",
+      "Montaje": "Base original incluida; perforaciones traseras para soporte VESA",
+      "Incluye": "Monitor, pedestal original, cable VGA y cable de corriente con enchufe nacional de 3 patas"
+    },
+    "notas_importantes": "Estado usado aceptable; la publicación indica que funciona sin problemas. Solo tiene entrada VGA y no incluye parlantes integrados. Para conectar un equipo HDMI se necesita un adaptador HDMI a VGA.",
+    "fotos": [
+      "img/e950Swn/monitor1.jpg",
+      "img/e950Swn/monitor2.jpg",
+      "img/e950Swn/monitor_stats.jpg",
+      "img/e950Swn/monitor_ejemplo.webp",
+      "img/e950Swn/monitor_ejemplo2.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "antenas-rf-omnidireccionales",
+    "titulo": "Antenas Omnidireccionales de Exterior para Radiofrecuencia",
+    "categoria": "Redes y UPS",
+    "precio": 5000,
+    "precio_anterior": 0,
+    "estado_producto": "Nuevo en caja",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Antenas omnidireccionales de tubo rígido para radiofrecuencia, repetidores, redes y proyectos electrónicos.",
+    "especificaciones": {
+      "Marca": "Genérica",
+      "Uso": "Exterior / intemperie",
+      "Conector": "Conector coaxial metálico roscado con pin central",
+      "Inalámbrico": "No"
+    },
+    "notas_importantes": "La publicación indica venta del lote completo o por unidad. El precio mostrado es $5.000; confirma si corresponde a una unidad o al lote y verifica la compatibilidad del conector antes de comprar.",
+    "fotos": [
+      "img/Antena Omnidireccinal/Antena_Omnidireccinal1.jpg",
+      "img/Antena Omnidireccinal/Antena_Omnidireccinal2.jpg",
+      "img/Antena Omnidireccinal/Antena_Omnidireccinal3.jpg",
+      "img/Antena Omnidireccinal/Antena_Omnidireccinal4.jpg",
+      "img/Antena Omnidireccinal/Antena_Omnidireccinal5.jpg",
+      "img/Antena Omnidireccinal/Antena_Omnidireccinal_ejemplo.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "control-clonador-433mhz",
+    "titulo": "Control Remoto Duplicador / Clonador Universal 433.92 MHz",
+    "categoria": "Electrónica y CCTV",
+    "precio": 5000,
+    "precio_anterior": 10000,
+    "mostrar_ahorro": true,
+    "estado_producto": "Nuevo",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Control remoto clonador de cuatro botones programables para portones, garajes y alarmas compatibles.",
+    "especificaciones": {
+      "Frecuencia": "433.92 MHz",
+      "Botones": "4 programables (A, B, C y D)",
+      "Compatibilidad": "Sistemas de código fijo compatibles",
+      "Configuración": "Clonación control a control; no requiere intervenir el motor"
+    },
+    "notas_importantes": "No es compatible con todos los portones: funciona con sistemas de código fijo, pero no con códigos variables o rolling code. El precio de la captura aparece como US$5.000; se cargó como $5.000 CLP por el contexto del catálogo. Confirma la moneda antes de publicar.",
+    "fotos": [
+      "img/Clonador Universals/Clonador1.jpg",
+      "img/Clonador Universals/Clonador2.jpg",
+      "img/Clonador Universals/Clonador3.jpg",
+      "img/Clonador Universals/Clonador4.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "pdu-apc-ap9565",
+    "titulo": "PDU APC AP9565 16A 12xC13 Rack 1U",
+    "categoria": "Redes y UPS",
+    "precio": 35000,
+    "precio_anterior": 190000,
+    "mostrar_ahorro": true,
+    "referencia_online": {
+      "precio_clp": 41665,
+      "fuente": "eBay",
+      "precio_original": "US$40",
+      "detalle": "Mismo modelo AP9565; conversión CLP mostrada por Bing Shopping. Estado del anuncio, despacho e impuestos por verificar.",
+      "consultado_el": "26-11-2026",
+      "url": "https://www.ebay.com/itm/471636455024"
+    },
+    "estado_producto": "Nuevo en caja",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "PDU APC de rack 1U con 12 salidas IEC C13, nueva, completa y sin uso.",
+    "especificaciones": {
+      "Modelo": "APC AP9565",
+      "Corriente": "16 A",
+      "Salidas": "12 x IEC C13",
+      "Voltaje": "208/230 V según la ficha del modelo",
+      "Formato": "1U para rack de 19 pulgadas",
+      "Incluye": "Cable de poder con conector IEC C20, brackets, tornillos, manual y tarjeta de registro"
+    },
+    "notas_importantes": "La publicación indica 8 unidades disponibles, $35.000 por unidad o 3 por $100.000. Retiro en Santiago; la publicación original indica que no realiza despacho. El fabricante especifica 16 A y 12 salidas C13; confirma la tensión y el circuito de tu rack antes de instalar.",
+    "fotos": [
+      "img/PDU APC/PDU_APC1.jpg",
+      "img/PDU APC/PDU_APC2.jpg",
+      "img/PDU APC/PDU_APC3.jpg",
+      "img/PDU APC/PDU_APC_Ejemplo.jpg",
+      "img/PDU APC/PDU_APC_Ejemplo2.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "lente-computar-ic-s",
+    "titulo": "Lente Computar i-CS Varifocal 3.9-10 mm F1.5",
+    "categoria": "Electrónica y CCTV",
+    "precio": 5000,
+    "precio_anterior": 80000,
+    "mostrar_ahorro": true,
+    "estado_producto": "Usado - Como nuevo",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Lente varifocal inteligente Computar para cámaras de seguridad compatibles con montura CS.",
+    "especificaciones": {
+      "Marca": "Computar",
+      "Distancia focal": "3.9-10 mm (varifocal)",
+      "Apertura": "F1.5",
+      "Formato de sensor": "1/1.8 pulgadas",
+      "Montura": "CS",
+      "Características": "P-Iris y compatibilidad IR según la publicación"
+    },
+    "notas_importantes": "La publicación indica excelente estado, caja original, espuma, tapas protectoras y manual. Verifica que la cámara use montura CS y sea compatible con lente i-CS antes de comprar.",
+    "fotos": [
+      "img/Lente_Camara/Lente_Camara1.jpg",
+      "img/Lente_Camara/Lente_Camara2.jpg",
+      "img/Lente_Camara/Lente_Camara3.jpg",
+      "img/Lente_Camara/Lente_Camara4.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "apc-ap9631",
+    "titulo": "Tarjeta de Red APC AP9631 Network Management Card 2",
+    "categoria": "Redes y UPS",
+    "precio": 8000,
+    "precio_anterior": 150000,
+    "mostrar_ahorro": true,
+    "referencia_online": {
+      "precio_clp": 45073,
+      "fuente": "eBay",
+      "precio_original": "US$43",
+      "detalle": "Anuncio del mismo modelo usado; tu unidad es Open Box. Conversión CLP mostrada por Bing Shopping; despacho e impuestos no incluidos ni verificados.",
+      "consultado_el": "26-11-2026",
+      "url": "https://www.ebay.com/itm/227479332219"
+    },
+    "estado_producto": "Open Box",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Tarjeta de administración de red APC para monitoreo y gestión remota de UPS compatibles.",
+    "especificaciones": {
+      "Modelo": "APC AP9631 Network Management Card 2",
+      "Red": "1 puerto RJ-45 Ethernet 10/100 Base-T",
+      "Puertos": "2 puertos Universal I/O y 2 puertos USB",
+      "Gestión": "Interfaz web y SNMP; compatible con IPv4/IPv6 según configuración",
+      "Incluye": "Tarjeta, cable USB/consola, informe de prueba de fábrica, CD/software, manuales y accesorios de montaje"
+    },
+    "notas_importantes": "La publicación la describe como open box y prácticamente nueva. Confirma la compatibilidad con el modelo y firmware de tu UPS APC antes de comprar; no es una tarjeta de red genérica.",
+    "fotos": [
+      "img/APC AP9631/AP9631_1.jpg",
+      "img/APC AP9631/AP9631_2.jpg",
+      "img/APC AP9631/AP9631_3.jpg",
+      "img/APC AP9631/AP9631_4.jpg",
+      "img/APC AP9631/AP9631_ejemplo1.jpg",
+      "img/APC AP9631/AP9631_ejemplo2.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "fuente-switching-s-35-12",
+    "titulo": "Fuente Switching S-35-12 12V 3A 36W",
+    "categoria": "Electrónica y CCTV",
+    "precio": 5000,
+    "precio_anterior": 0,
+    "estado_producto": "Nuevo en caja",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Fuente conmutada nueva de 12 V y 3 A para tiras LED, CCTV y proyectos electrónicos.",
+    "especificaciones": {
+      "Modelo": "S-35-12",
+      "Entrada": "110/220 V AC, seleccionable mediante switch interno",
+      "Salida": "12 V DC",
+      "Corriente máxima": "3 A",
+      "Potencia": "36 W"
+    },
+    "notas_importantes": "Fuente tipo abierta: sus terminales quedan expuestos y debe instalarse en un lugar protegido, con la polaridad y tensión correctas. Revisa el selector de entrada antes de conectarla.",
+    "fotos": [
+      "img/Fuente de poder/fuente_1.jpg",
+      "img/Fuente de poder/fuente_2.jpg",
+      "img/Fuente de poder/fuente_3.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "cisco-air-ant1728",
+    "titulo": "Antena Wi-Fi Cisco AIR-ANT1728 Omnidireccional 5.2 dBi",
+    "categoria": "Redes y UPS",
+    "precio": 5000,
+    "precio_anterior": 30000,
+    "mostrar_ahorro": true,
+    "estado_producto": "Nuevo en caja",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Antena omnidireccional Cisco de 2.4 GHz, con ganancia de 5.2 dBi y accesorios de montaje.",
+    "especificaciones": {
+      "Marca": "Cisco",
+      "Modelo / P/N": "AIR-ANT1728 / 800-24642-01",
+      "Frecuencia": "2.4 GHz",
+      "Ganancia": "5.2 dBi",
+      "Patrón": "Omnidireccional (360 grados)",
+      "Conector": "RP-TNC",
+      "Incluye": "Antena blanca con cable integrado, soporte metálico y tornillos de montaje"
+    },
+    "notas_importantes": "Nueva en caja según la publicación. Diseñada para Cisco Aironet u otro equipo compatible con conector RP-TNC; no se conecta directamente a routers Wi-Fi comunes sin verificar el conector.",
+    "fotos": [
+      "img/ANT1728/ANT1728_1.jpg",
+      "img/ANT1728/ANT1728_2.jpg",
+      "img/ANT1728/ANT1728_3.jpg",
+      "img/ANT1728/ANT1728_4.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  },
+  {
+    "id": "cisco-cp-pwr-inj",
+    "titulo": "Inyector de Corriente Cisco Unified IP Phone CP-PWR-INJ",
+    "categoria": "Redes y UPS",
+    "precio": 5000,
+    "precio_anterior": 20000,
+    "mostrar_ahorro": true,
+    "estado_producto": "Nuevo en caja",
+    "disponibilidad": "Disponible",
+    "resumen_corto": "Inyector de corriente original Cisco para teléfonos IP compatibles, con fuente y embalaje.",
+    "especificaciones": {
+      "Marca": "Cisco",
+      "Modelo": "CP-PWR-INJ",
+      "Entrada": "100-240 V AC, 0.5 A, 50-60 Hz",
+      "Salida": "48 V DC, 0.38 A",
+      "Incluye": "Inyector, cable de alimentación, manuales y caja original"
+    },
+    "notas_importantes": "La publicación lo describe como impecable y nuevo en su paquete. Es para teléfonos Cisco compatibles; no reemplaza un switch PoE ni es una fuente PoE universal. Verifica el modelo de tu teléfono antes de comprar.",
+    "fotos": [
+      "img/CP-PWR-INJ/CP-PWR-INJ_1.jpg",
+      "img/CP-PWR-INJ/CP-PWR-INJ_2.jpg",
+      "img/CP-PWR-INJ/CP-PWR-INJ_3.jpg",
+      "img/CP-PWR-INJ/CP-PWR-INJ_4.jpg",
+      "img/CP-PWR-INJ/CP-PWR-INJ_5.jpg"
+    ],
+    "url_marketplace": "https://www.facebook.com/marketplace/"
+  }
+]
