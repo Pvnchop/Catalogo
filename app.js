@@ -10,15 +10,18 @@ const CLP = new Intl.NumberFormat("es-CL", {
 const grid = document.querySelector("#grilla-productos");
 const searchInput = document.querySelector("#busqueda");
 const availableOnly = document.querySelector("#solo-disponibles");
+const sortSelect = document.querySelector("#ordenamiento");
 const countLabel = document.querySelector("#resultado-conteo");
 const emptyState = document.querySelector("#sin-resultados");
 const loadError = document.querySelector("#error-carga");
+const loadingState = document.querySelector("#estado-carga");
 const dialog = document.querySelector("#modal-producto");
 const mainPhoto = document.querySelector("#foto-principal");
 const thumbnails = document.querySelector("#miniaturas");
 const specsList = document.querySelector("#tabla-especificaciones");
 let products = [];
 let selectedCategory = "Todos";
+let lastFocusedElement = null;
 
 function formatPrice(value) {
   return value > 0 ? CLP.format(value) : "Precio por confirmar";
@@ -87,7 +90,7 @@ function productSearchText(product) {
     product.estado_producto,
     product.resumen_corto,
     product.notas_importantes,
-    ...Object.entries(product.especificaciones).flat(),
+    ...Object.entries(product.especificaciones || {}).flat(),
   ].join(" ").toLocaleLowerCase("es");
 }
 
@@ -97,34 +100,37 @@ function createProductCard(product) {
     ? Math.round((1 - product.precio / product.precio_anterior) * 100)
     : null;
   const card = document.createElement("article");
-  card.className = `overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg ${sold ? "opacity-65" : ""}`;
+  card.className = `min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg ${sold ? "opacity-60" : ""}`;
   card.innerHTML = `
     <div class="relative overflow-hidden bg-slate-100">
-      <img src="${escapeHtml(product.fotos[0] || PLACEHOLDER_IMAGE)}" alt="${escapeHtml(product.titulo)}" class="aspect-[4/3] w-full object-cover" loading="lazy">
+      <img src="${escapeHtml(product.fotos[0] || PLACEHOLDER_IMAGE)}" width="800" height="600" alt="${escapeHtml(product.titulo)}" class="product-photo w-full object-cover" loading="lazy" decoding="async">
       <span class="absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold ${availabilityClasses(product.disponibilidad)}">${escapeHtml(product.disponibilidad)}</span>
       ${discount ? `<span class="absolute right-3 top-3 rounded-full bg-slate-900/90 px-3 py-1 text-xs font-bold text-white">-${discount}%</span>` : ""}
     </div>
     <div class="flex min-h-[245px] flex-col p-5">
       <div class="mb-3 flex flex-wrap items-center gap-2">
         <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">${escapeHtml(product.estado_producto)}</span>
-        <span class="text-xs font-medium text-slate-400">${escapeHtml(product.categoria)}</span>
+        <span class="text-xs font-medium text-slate-600">${escapeHtml(product.categoria)}</span>
       </div>
       <h3 class="text-lg font-bold leading-snug text-slate-900">${escapeHtml(product.titulo)}</h3>
       <p class="line-clamp-2 mt-2 min-h-10 text-sm leading-relaxed text-slate-600">${escapeHtml(product.resumen_corto)}</p>
       <div class="mt-4 flex items-baseline gap-2">
         <span class="text-xl font-black text-slate-950">${formatPrice(product.precio)}</span>
-        ${product.precio_anterior > product.precio ? `<span class="text-sm text-slate-400 line-through">${formatPrice(product.precio_anterior)}</span>` : ""}
+        ${product.precio_anterior > product.precio ? `<span class="text-sm text-slate-600 line-through">${formatPrice(product.precio_anterior)}</span>` : ""}
       </div>
       ${product.mostrar_ahorro && product.precio_anterior > product.precio ? `<p class="mt-1 text-xs font-bold text-emerald-700">Ahorras ${formatPrice(product.precio_anterior - product.precio)} vs. precio anterior publicado</p>` : ""}
       <div class="online-reference mt-3 rounded-xl border border-sky-100 bg-sky-50 p-3"></div>
-      <button type="button" class="mt-auto rounded-xl bg-teal-800 px-4 py-3 text-sm font-bold text-white transition hover:bg-teal-900 focus:outline-none focus:ring-4 focus:ring-teal-200">
+      <button type="button" class="mt-auto min-h-12 rounded-xl bg-teal-800 px-4 py-3 text-sm font-bold text-white transition hover:bg-teal-900 focus:outline-none focus:ring-4 focus:ring-teal-200">
         Ver ficha técnica y fotos
       </button>
     </div>`;
   renderOnlineReference(card.querySelector(".online-reference"), product);
   const image = card.querySelector("img");
   image.addEventListener("error", () => {
-    if (!image.src.endsWith(PLACEHOLDER_IMAGE)) image.src = PLACEHOLDER_IMAGE;
+    if (!image.src.endsWith(PLACEHOLDER_IMAGE)) {
+      image.src = PLACEHOLDER_IMAGE;
+      image.alt = `Imagen no disponible: ${product.titulo}`;
+    }
   }, { once: true });
   card.querySelector("button").addEventListener("click", () => openProduct(product));
   return card;
@@ -138,6 +144,12 @@ function renderProducts() {
     const matchesAvailability = !availableOnly.checked || product.disponibilidad === "Disponible";
     return matchesCategory && matchesQuery && matchesAvailability;
   });
+
+  if (sortSelect.value === "precio-asc") {
+    visibleProducts.sort((a, b) => a.precio - b.precio);
+  } else if (sortSelect.value === "precio-desc") {
+    visibleProducts.sort((a, b) => b.precio - a.precio);
+  }
 
   grid.replaceChildren(...visibleProducts.map(createProductCard));
   countLabel.textContent = `${visibleProducts.length} ${visibleProducts.length === 1 ? "producto" : "productos"}`;
@@ -153,6 +165,8 @@ function setImageSource(image, source) {
 }
 
 function selectPhoto(product, index) {
+  mainPhoto.loading = "eager";
+  mainPhoto.decoding = "async";
   setImageSource(mainPhoto, product.fotos[index]);
   mainPhoto.alt = `${product.titulo} — foto ${index + 1}`;
   thumbnails.querySelectorAll("button").forEach((button, buttonIndex) => {
@@ -163,21 +177,24 @@ function selectPhoto(product, index) {
 
 function setContactActions(product) {
   const sold = product.disponibilidad === "Vendido";
+  const actions = document.querySelector("#acciones-contacto");
+  const soldMessage = document.querySelector("#modal-vendido");
   const whatsapp = document.querySelector("#boton-whatsapp");
   const marketplace = document.querySelector("#boton-marketplace");
-  whatsapp.disabled = sold;
-  marketplace.disabled = sold;
-  whatsapp.onclick = () => {
-    const price = product.precio > 0 ? CLP.format(product.precio) : "precio por confirmar";
-    const message = `Hola Francisco, vi tu catálogo web y me interesa el producto: ${product.titulo} (${price}). ¿Sigue disponible?`;
-    window.open(`https://wa.me/56969024723?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-  };
-  marketplace.onclick = () => {
-    if (product.url_marketplace) window.open(product.url_marketplace, "_blank", "noopener,noreferrer");
-  };
+  actions.classList.toggle("hidden", sold);
+  soldMessage.classList.toggle("hidden", !sold);
+  if (sold) return;
+
+  const price = product.precio > 0 ? CLP.format(product.precio) : "precio por confirmar";
+  const message = `Hola Francisco, vi tu catálogo web y me interesa el producto: ${product.titulo} (${price}). ¿Sigue disponible?`;
+  whatsapp.href = `https://wa.me/56969024723?text=${encodeURIComponent(message)}`;
+  const marketplaceUrl = safeExternalUrl(product.url_marketplace);
+  marketplace.href = marketplaceUrl || "#";
+  marketplace.classList.toggle("hidden", !marketplaceUrl);
 }
 
 function openProduct(product) {
+  lastFocusedElement = document.activeElement;
   document.querySelector("#modal-titulo").textContent = product.titulo;
   document.querySelector("#modal-resumen").textContent = product.resumen_corto;
   document.querySelector("#modal-precio").textContent = formatPrice(product.precio);
@@ -195,6 +212,8 @@ function openProduct(product) {
   availability.className = `rounded-full px-3 py-1 text-xs font-bold ${availabilityClasses(product.disponibilidad)}`;
   document.querySelector("#modal-estado").textContent = product.estado_producto;
   document.querySelector("#modal-notas").textContent = product.notas_importantes;
+  document.querySelector("#modal-condiciones").textContent =
+    "Entrega presencial en Metro Santa Julia, San Joaquín o Grecia (horario a convenir); consulta por WhatsApp las opciones para este producto. Starken: por pagar y previo pago. Electrónicos y monitores se entregan probados y puedo enviar video.";
 
   specsList.replaceChildren(...Object.entries(product.especificaciones).map(([label, value]) => {
     const row = document.createElement("div");
@@ -214,18 +233,40 @@ function openProduct(product) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "shrink-0 rounded-lg p-0.5";
-    button.setAttribute("aria-label", `Ver foto ${index + 1}`);
+    button.setAttribute("aria-label", `Ver foto ${index + 1} de ${product.titulo}`);
     const image = document.createElement("img");
+    image.width = 80;
+    image.height = 60;
+    image.loading = "lazy";
+    image.decoding = "async";
     image.className = "h-16 w-20 rounded-md object-cover";
-    image.alt = "";
-    setImageSource(image, photo);
+    image.alt = `${product.titulo} — miniatura ${index + 1}`;
+    if (index === 0) {
+      setImageSource(image, photo);
+      image.dataset.loaded = "true";
+    } else {
+      image.src = PLACEHOLDER_IMAGE;
+      image.dataset.photo = photo;
+    }
     button.append(image);
-    button.addEventListener("click", () => selectPhoto(product, index));
+    const loadThumbnail = () => {
+      if (image.dataset.loaded === "true") return;
+      setImageSource(image, image.dataset.photo);
+      image.dataset.loaded = "true";
+    };
+    button.addEventListener("mouseenter", loadThumbnail);
+    button.addEventListener("focus", loadThumbnail);
+    button.addEventListener("click", () => {
+      loadThumbnail();
+      selectPhoto(product, index);
+    });
     return button;
   }));
   selectPhoto(product, 0);
   setContactActions(product);
   dialog.showModal();
+  document.body.classList.add("modal-open");
+  document.querySelector("#cerrar-modal").focus();
 }
 
 document.querySelector("#categorias").addEventListener("click", (event) => {
@@ -246,8 +287,19 @@ document.querySelector("#categorias").addEventListener("click", (event) => {
 });
 
 searchInput.addEventListener("input", renderProducts);
-availableOnly.addEventListener("change", renderProducts);
+availableOnly.addEventListener("change", () => {
+  document.querySelector("#estado-disponibilidad").textContent = availableOnly.checked
+    ? "Solo disponibles"
+    : "Todos (incluyendo vendidos)";
+  renderProducts();
+});
+sortSelect.addEventListener("change", renderProducts);
 document.querySelector("#cerrar-modal").addEventListener("click", () => dialog.close());
+dialog.addEventListener("close", () => {
+  document.body.classList.remove("modal-open");
+  if (lastFocusedElement && lastFocusedElement.isConnected) lastFocusedElement.focus();
+  lastFocusedElement = null;
+});
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
 });
@@ -260,9 +312,11 @@ fetch("productos.json")
   .then((data) => {
     if (!Array.isArray(data)) throw new TypeError("El catálogo debe ser una lista de productos.");
     products = data;
+    loadingState.classList.add("hidden");
     renderProducts();
   })
   .catch((error) => {
     console.error("No se pudo cargar productos.json:", error);
+    loadingState.classList.add("hidden");
     loadError.classList.remove("hidden");
   });

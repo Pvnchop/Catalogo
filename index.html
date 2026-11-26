@@ -4,30 +4,68 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8fafc">
-  <meta name="description" content="Catálogo de artículos en venta. Revisa fotos, especificaciones y disponibilidad.">
+  <meta name="description" content="Revisa el catálogo de Francisco: tecnología, equipos y coleccionables en venta en Santiago de Chile.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Catálogo de Francisco | Artículos en venta">
+  <meta property="og:description" content="Tecnología, equipos y coleccionables en venta en Santiago de Chile. Revisa fotos, precios y disponibilidad.">
+  <meta property="og:url" content="https://pvnchop.github.io/Catalogo/">
+  <meta property="og:image" content="https://pvnchop.github.io/Catalogo/img/E1916h/monitor1.jpg">
+  <meta property="og:image:alt" content="Monitor Dell E1916H del catálogo de Francisco">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Catálogo de Francisco | Artículos en venta</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { color-scheme: light; scroll-behavior: smooth; }
+    html { color-scheme: light; scroll-behavior: smooth; max-width: 100%; overflow-x: hidden; }
+    *, *::before, *::after { box-sizing: border-box; }
     body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body.modal-open { overflow: hidden; overscroll-behavior: none; }
     .line-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-    dialog { border: 0; padding: 0; }
+    #categorias { max-width: 100%; min-width: 0; scrollbar-width: none; }
+    #categorias::-webkit-scrollbar { display: none; }
+    #categorias button { flex-shrink: 0; }
+    #grilla-productos { grid-template-columns: minmax(0, 1fr); }
+    #grilla-productos > * { min-width: 0; }
+    @media (min-width: 480px) {
+      #grilla-productos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 769px) {
+      #grilla-productos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1280px) {
+      #grilla-productos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    dialog { border: 0; padding: 0; width: min(96vw, 900px); height: min(92vh, 900px); max-height: 92vh; overflow: hidden; }
+    dialog[open] { display: flex; flex-direction: column; }
     dialog::backdrop { background: rgb(15 23 42 / .68); backdrop-filter: blur(3px); }
     .thumb-active { outline: 2px solid #0f766e; outline-offset: 2px; }
+    .modal-header, .modal-footer { flex: 0 0 auto; }
+    .modal-content { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+    .modal-footer { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+    .product-photo { aspect-ratio: 4 / 3; }
+    @media (max-width: 767px) {
+      dialog[open] {
+        position: fixed;
+        inset: 0;
+        margin: 0;
+        width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        max-height: 100vh;
+        max-height: 100dvh;
+        border-radius: 0;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
-  <details open class="sticky top-0 z-30 border-b border-amber-200 bg-amber-50/95 text-amber-950 backdrop-blur">
-    <summary class="mx-auto flex max-w-7xl cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-semibold sm:px-6 lg:px-8">
-      <span class="flex items-center gap-2"><span aria-hidden="true">ℹ️</span> Condiciones generales de venta</span>
-      <span class="text-xs font-medium text-amber-800">Ver / ocultar</span>
-    </summary>
-    <div class="mx-auto grid max-w-7xl gap-2 px-4 pb-4 text-sm text-amber-900 sm:grid-cols-3 sm:px-6 lg:px-8">
-      <p><strong>Entrega presencial:</strong> Metro Santa Julia, San Joaquín o Grecia; horario a convenir.</p>
-      <p><strong>Envíos a regiones:</strong> por Starken por pagar, previo pago del producto.</p>
-      <p><strong>Equipos electrónicos y monitores:</strong> se entregan probados; puedo enviar video de funcionamiento antes de coordinar.</p>
+  <section aria-label="Condiciones generales de venta" class="border-b border-amber-200 bg-amber-50 text-amber-950">
+    <div class="mx-auto grid max-w-7xl gap-3 px-4 py-3 text-sm sm:grid-cols-3 sm:px-6 lg:px-8">
+      <p class="flex min-w-0 items-start gap-2"><span aria-hidden="true">📍</span><span><strong>Entrega presencial:</strong> Metro Santa Julia, San Joaquín o Grecia; horario a convenir.</span></p>
+      <p class="flex min-w-0 items-start gap-2"><span aria-hidden="true">📦</span><span><strong>Envíos a regiones:</strong> Starken por pagar, previo pago del producto. Otras opciones varían según el artículo; consulta.</span></p>
+      <p class="flex min-w-0 items-start gap-2"><span aria-hidden="true">▶️</span><span><strong>Electrónicos y monitores:</strong> se entregan probados; puedo enviar video antes de coordinar.</span></p>
     </div>
-  </details>
+  </section>
 
   <header class="bg-white">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
@@ -44,19 +82,47 @@
     </div>
   </header>
 
+  <section aria-labelledby="quien-vende-titulo" class="border-b border-slate-200 bg-white">
+    <div class="mx-auto grid max-w-7xl gap-7 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:px-8">
+      <div>
+        <h2 id="quien-vende-titulo" class="text-lg font-bold text-slate-900">Quién vende</h2>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">Vendo por Facebook Marketplace hace 2–3 años. Actualmente gestiono la venta de productos que sobran, no se usan o no están relacionados con las actividades de la empresa donde trabajo; he vendido desde PC, gabinetes y UPS hasta artículos grandes y pequeños.</p>
+      </div>
+      <div>
+        <h2 class="text-lg font-bold text-slate-900">Envíos a regiones</h2>
+        <p class="mt-1 text-sm text-slate-600">La modalidad puede variar según el producto; consúltame antes de coordinar. Para Starken: por pagar y previo pago del producto.</p>
+        <ol class="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+          <li><span class="font-bold text-teal-800">1.</span> Me escribes y me dices qué artículo te interesa.</li>
+          <li><span class="font-bold text-teal-800">2.</span> Confirmo la entrega; si es un equipo, puedo enviarte un video.</li>
+          <li><span class="font-bold text-teal-800">3.</span> Si es por Starken, pagas el producto antes del despacho.</li>
+          <li><span class="font-bold text-teal-800">4.</span> Despacho y te comparto el número de seguimiento.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
   <main id="productos" class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
     <section aria-labelledby="filtros-titulo" class="mb-8">
       <h2 id="filtros-titulo" class="sr-only">Buscar y filtrar productos</h2>
-      <div class="flex flex-col gap-5">
-        <label class="relative block max-w-2xl">
-          <span class="sr-only">Buscar productos</span>
-          <span aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-4 flex items-center text-slate-400">⌕</span>
-          <input id="busqueda" type="search" placeholder="Buscar por producto, modelo o especificación…" autocomplete="off"
-            class="w-full rounded-2xl border border-slate-200 bg-white py-3.5 pl-11 pr-4 text-sm shadow-sm outline-none transition placeholder:text-slate-400 focus:border-teal-600 focus:ring-4 focus:ring-teal-100">
-        </label>
+      <div class="flex min-w-0 flex-col gap-5">
+        <div class="grid min-w-0 gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
+          <label class="relative block min-w-0">
+            <span class="sr-only">Buscar productos</span>
+            <span aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-4 flex items-center text-slate-500">⌕</span>
+            <input id="busqueda" type="search" placeholder="Buscar por producto, modelo o especificación…" autocomplete="off"
+              class="min-h-12 w-full min-w-0 rounded-2xl border border-slate-300 bg-white py-3.5 pl-11 pr-4 text-sm shadow-sm outline-none transition placeholder:text-slate-500 focus:border-teal-700 focus:ring-4 focus:ring-teal-100">
+          </label>
+          <label class="flex min-w-0 items-center gap-2 text-sm font-semibold text-slate-700">
+            <span>Ordenar:</span>
+            <select id="ordenamiento" class="min-h-12 min-w-0 flex-1 rounded-xl border border-slate-300 bg-white px-3 text-sm focus:border-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-100 sm:flex-none">
+              <option value="catalogo">Orden del catálogo</option>
+              <option value="precio-asc">Precio: menor a mayor</option>
+              <option value="precio-desc">Precio: mayor a menor</option>
+            </select>
+          </label>
+        </div>
 
-        <div class="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
-          <div id="categorias" class="flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoría">
+        <div class="flex min-w-0 flex-col justify-between gap-4 lg:flex-row lg:items-center">
+          <div id="categorias" class="flex min-w-0 gap-2 overflow-x-auto pb-2" role="group" aria-label="Filtrar por categoría">
             <button type="button" class="category-button rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white" data-category="Todos" aria-pressed="true">Todos</button>
             <button type="button" class="category-button rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-teal-600 hover:text-teal-800" data-category="Monitores" aria-pressed="false">Monitores</button>
             <button type="button" class="category-button rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-teal-600 hover:text-teal-800" data-category="Redes y UPS" aria-pressed="false">Redes y UPS</button>
@@ -66,21 +132,30 @@
           <label class="inline-flex w-fit cursor-pointer items-center gap-3 text-sm font-medium text-slate-700">
             <input id="solo-disponibles" type="checkbox" checked class="peer sr-only">
             <span aria-hidden="true" class="relative h-6 w-11 rounded-full bg-slate-300 transition peer-checked:bg-teal-700 peer-focus-visible:ring-4 peer-focus-visible:ring-teal-200 after:absolute after:left-1 after:top-1 after:h-4 after:w-4 after:rounded-full after:bg-white after:shadow after:transition peer-checked:after:translate-x-5"></span>
-            <span>Solo disponibles</span>
+            <span id="estado-disponibilidad">Solo disponibles</span>
           </label>
         </div>
         <p id="resultado-conteo" class="text-sm text-slate-500" aria-live="polite"></p>
       </div>
     </section>
 
+    <div id="estado-carga" class="mb-6 rounded-2xl border border-slate-200 bg-white px-5 py-6 text-sm font-medium text-slate-700" role="status" aria-live="polite">
+      <span class="inline-flex items-center gap-3"><span class="h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-teal-700" aria-hidden="true"></span>Cargando productos…</span>
+    </div>
+
     <section aria-label="Productos">
-      <div id="grilla-productos" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+      <div id="grilla-productos" class="grid gap-5"></div>
       <div id="sin-resultados" class="hidden rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center">
         <p class="text-lg font-bold text-slate-800">No encontramos productos</p>
         <p class="mt-2 text-sm text-slate-500">Prueba con otra búsqueda o cambia los filtros.</p>
       </div>
-      <div id="error-carga" class="hidden rounded-2xl border border-red-200 bg-red-50 px-6 py-8 text-center text-red-800" role="alert">
-        No se pudo cargar el catálogo. Comprueba que productos.json esté disponible y vuelve a cargar la página.
+      <div id="error-carga" class="hidden rounded-2xl border border-amber-200 bg-amber-50 px-6 py-8 text-center text-amber-950" role="alert">
+        <p class="text-base font-semibold">Estamos actualizando el catálogo. Escríbeme por WhatsApp y te cuento qué hay disponible.</p>
+        <a href="https://wa.me/56969024723?text=Hola%20Francisco%2C%20estoy%20viendo%20tu%20cat%C3%A1logo%20y%20quiero%20saber%20qu%C3%A9%20hay%20disponible."
+          target="_blank" rel="noopener noreferrer"
+          class="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl bg-emerald-800 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-900 focus:outline-none focus:ring-4 focus:ring-emerald-200">
+          Escríbeme por WhatsApp
+        </a>
       </div>
     </section>
   </main>
@@ -92,19 +167,19 @@
     </div>
   </footer>
 
-  <dialog id="modal-producto" aria-labelledby="modal-titulo" class="m-auto max-h-[92vh] w-[min(96vw,900px)] max-w-none overflow-y-auto rounded-3xl bg-white shadow-2xl">
-    <div class="sticky top-0 z-10 flex items-center justify-between border-b border-slate-100 bg-white/95 px-5 py-4 backdrop-blur sm:px-7">
+  <dialog id="modal-producto" aria-labelledby="modal-titulo" class="m-auto max-w-none rounded-3xl bg-white shadow-2xl">
+    <div class="modal-header z-10 flex items-center justify-between border-b border-slate-200 bg-white px-4 py-2.5 sm:px-7">
       <p class="text-sm font-bold uppercase tracking-wider text-teal-800">Ficha del producto</p>
-      <button id="cerrar-modal" type="button" class="rounded-full p-2 text-2xl leading-none text-slate-500 hover:bg-slate-100 hover:text-slate-900" aria-label="Cerrar ficha">&times;</button>
+      <button id="cerrar-modal" type="button" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-2xl leading-none text-slate-700 hover:bg-slate-100 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-teal-200" aria-label="Cerrar ficha">&times;</button>
     </div>
-    <div class="grid gap-7 p-5 sm:p-7 lg:grid-cols-2">
-      <div>
+    <div class="modal-content grid min-w-0 gap-5 p-4 sm:gap-7 sm:p-7 lg:grid-cols-2">
+      <div class="min-w-0">
         <div class="overflow-hidden rounded-2xl bg-slate-100">
-          <img id="foto-principal" class="aspect-[4/3] w-full object-contain" alt="">
+          <img id="foto-principal" width="800" height="600" loading="eager" decoding="async" class="product-photo w-full object-contain" alt="">
         </div>
         <div id="miniaturas" class="mt-3 flex gap-3 overflow-x-auto p-1" aria-label="Fotos del producto"></div>
       </div>
-      <div>
+      <div class="min-w-0">
         <div class="flex flex-wrap items-center gap-2">
           <span id="modal-disponibilidad" class="rounded-full px-3 py-1 text-xs font-bold"></span>
           <span id="modal-estado" class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600"></span>
@@ -113,10 +188,11 @@
         <p id="modal-resumen" class="mt-3 leading-relaxed text-slate-600"></p>
         <div class="mt-4 flex items-baseline gap-3">
           <p id="modal-precio" class="text-2xl font-black text-slate-950"></p>
-          <p id="modal-precio-anterior" class="text-sm text-slate-400 line-through"></p>
+          <p id="modal-precio-anterior" class="text-sm text-slate-600 line-through"></p>
         </div>
         <p id="modal-ahorro" class="mt-1 text-sm font-bold text-emerald-700"></p>
         <div id="modal-referencia-online" class="mt-4 rounded-xl border border-sky-100 bg-sky-50 p-4"></div>
+        <p id="modal-condiciones" class="mt-4 rounded-xl bg-slate-100 p-3 text-sm leading-relaxed text-slate-800"></p>
         <div class="mt-7">
           <h3 class="text-sm font-bold uppercase tracking-wider text-slate-700">Especificaciones</h3>
           <dl id="tabla-especificaciones" class="mt-3 divide-y divide-slate-100 rounded-xl border border-slate-100"></dl>
@@ -124,10 +200,11 @@
         <aside id="modal-notas" class="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-amber-950"></aside>
       </div>
     </div>
-    <div class="sticky bottom-0 grid gap-3 border-t border-slate-100 bg-white/95 p-5 backdrop-blur sm:grid-cols-2 sm:px-7">
-      <button id="boton-whatsapp" type="button" class="rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-200 disabled:cursor-not-allowed disabled:bg-slate-300">Consultar por WhatsApp</button>
-      <button id="boton-marketplace" type="button" class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition hover:border-slate-500 hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400">Ver en Facebook Marketplace</button>
+    <div id="acciones-contacto" class="modal-footer flex flex-col gap-2 border-t border-slate-200 bg-white px-4 pt-3 sm:px-7 sm:pt-4">
+      <a id="boton-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 items-center justify-center rounded-xl bg-emerald-800 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-900 focus:outline-none focus:ring-4 focus:ring-emerald-200">Consultar por WhatsApp</a>
+      <a id="boton-marketplace" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold text-slate-700 underline decoration-slate-400 underline-offset-2 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-slate-200">Ver en Facebook Marketplace</a>
     </div>
+    <p id="modal-vendido" class="modal-footer hidden border-t border-slate-200 bg-red-50 px-4 py-4 text-center text-sm font-bold text-red-900 sm:px-7">Este producto está vendido; no se puede consultar ni contactar por esta publicación.</p>
   </dialog>
 
   <script src="app.js" defer></script>
